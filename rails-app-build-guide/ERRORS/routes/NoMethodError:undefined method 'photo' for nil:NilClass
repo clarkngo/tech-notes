@@ -1,0 +1,9 @@
+Source: https://rollbar.com/blog/top-10-ruby-on-rails-errors/
+
+Getting a `NoMethodError: undefined method street for nil:NilClass`, you can now call.
+```
+street = user&.address&.street
+```
+The above will now act the same as using dig. 
+If the address is nil then street will be nil and you will need to handle the nil when you later refer to the street. 
+If all the objects are present, street will be assigned correctly.

@@ -1,0 +1,90 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf400
+{\fonttbl\f0\fnil\fcharset0 HelveticaNeue;\f1\fswiss\fcharset0 Helvetica;\f2\fmodern\fcharset0 Courier;
+\f3\fnil\fcharset0 Menlo-Regular;\f4\fnil\fcharset0 HelveticaNeue-Light;}
+{\colortbl;\red255\green255\blue255;\red38\green38\blue38;\red185\green188\blue186;\red22\green23\blue25;
+\red197\green200\blue198;\red219\green48\blue28;\red133\green190\blue253;\red255\green255\blue168;\red233\green233\blue233;
+\red137\green195\blue135;\red244\green0\blue95;\red252\green81\blue252;\red251\green253\blue249;}
+{\*\expandedcolortbl;;\cssrgb\c20000\c20000\c20000;\cssrgb\c77255\c78431\c77647;\cssrgb\c11373\c12157\c12941;
+\csgenericrgb\c77255\c78431\c77647;\cssrgb\c89412\c27843\c13725;\cssrgb\c58824\c79608\c99608;\cssrgb\c100000\c100000\c71373;\cssrgb\c92941\c92941\c92941;
+\cssrgb\c60000\c80000\c60000;\cssrgb\c97647\c14902\c44706;\cssrgb\c100000\c45098\c99216;\cssrgb\c98824\c99216\c98039;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\sl840\sa600\partightenfactor0
+
+\f0\b\fs72 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Lesson 5: Setting up the models and the database for places\
+\pard\pardeftab720\sl600\sa200\partightenfactor0
+
+\b0\fs36 \cf2 Our Nomster application is going to support user entered places, which indicates we need to store the details about the places users have entered someplace. In this lesson, we will setup our places database so our application has a place to store these user entered places.\
+\pard\pardeftab720\sl320\partightenfactor0
+
+\f1\fs28 \cf2 \
+\
+\pard\pardeftab720\sl320\sa1000\partightenfactor0
+\cf2 \
+\pard\pardeftab720\sl576\sa600\partightenfactor0
+
+\fs32 \cf2 We need to setup a model and a database table so we can store our new places inside the database. If we look at our wireframes (seriously do it!) we can see that the form which creates a place has three different fields:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl576\partightenfactor0
+\ls1\ilvl0\cf2 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 name\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 description\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 address\
+\pard\pardeftab720\sl576\sa600\partightenfactor0
+\cf2 Those are the same fields that we want to have available in our database (think of it just like 3 columns in an excel sheet).\
+Run the following in the terminal:\
+\pard\pardeftab720\sl460\partightenfactor0
+
+\f2\fs28 \cf3 \cb4 \strokec3 \shad0 $ rails generate model place\
+\pard\pardeftab720\sl576\sa600\partightenfactor0
+
+\f1\fs32 \cf2 \cb1 \strokec2 \shad0 This will create the model (don't worry about what a model is just yet) and the migration for us. First step is to edit the migration file. This file will live in\'a0
+\f3\fs28\fsmilli14400 \cf6 \strokec6 db/migrate/XXXXX_create_places.rb
+\f1\fs32 \cf2 \strokec2 , where XXXXX is the time when you generated the migration.\uc0\u8232 \
+We'll want this file to look like this:\
+\pard\pardeftab720\sl460\partightenfactor0
+
+\f2\fs28 \cf7 \cb4 \strokec7 \shad0 class\cf3 \strokec3 \shad0  \cf8 \strokec8 \shad0 CreatePlaces\cf3 \strokec3 \shad0  \cf9 \strokec9 \shad0 <\cf3 \strokec3 \shad0  \cf10 \strokec10 \shad0 ActiveRecord\cf3 \strokec3 \shad0 :\cf11 \strokec11 \shad0 :Migration\cf3 \strokec3 \shad0 [\cf12 \strokec12 \shad0 5.0\cf3 \strokec3 \shad0 ]\
+  \cf7 \strokec7 \shad0 def\cf3 \strokec3 \shad0  change\
+    create_table \cf11 \strokec11 \shad0 :places\cf3 \strokec3 \shad0  \cf7 \strokec7 \shad0 do\cf3 \strokec3 \shad0  \cf9 \strokec9 \shad0 |\cf3 \strokec3 \shad0 t\cf9 \strokec9 \shad0 |\cf3 \strokec3 \shad0 \
+      t.string \cf11 \strokec11 \shad0 :name\cf3 \strokec3 \shad0 \
+      t.text \cf11 \strokec11 \shad0 :description\cf3 \strokec3 \shad0 \
+      t.string \cf11 \strokec11 \shad0 :address\cf3 \strokec3 \shad0 \
+      t.timestamps\
+    \cf7 \strokec7 \shad0 end\cf3 \strokec3 \shad0 \
+  \cf7 \strokec7 \shad0 end\cf3 \strokec3 \shad0 \
+\cf7 \strokec7 \shad0 end\
+\pard\pardeftab720\sl460\partightenfactor0
+\cf3 \strokec3 \shad0  \
+ \
+ \
+\pard\pardeftab720\sl576\sa600\partightenfactor0
+
+\f1\fs32 \cf2 \cb1 \strokec2 \shad0 Then save this file (saving the file now is VERY important).\
+You can create the columns inside your database by what's called "running the migration". We do this with the following command in the terminal:\
+\pard\pardeftab720\sl460\partightenfactor0
+
+\f2\fs28 \cf3 \cb4 \strokec3 \shad0 $ rake db:migrate\
+\pard\pardeftab720\sl576\sa600\partightenfactor0
+
+\f1\fs32 \cf2 \cb1 \strokec2 \shad0 Awesome. Now we have a database and a model for the project.\
+\pard\pardeftab720\sl320\partightenfactor0
+
+\fs28 \cf2 \pard\pardeftab720\sl320\partightenfactor0
+\cf2 \
+\pard\pardeftab720\sl840\sa200\qc\partightenfactor0
+
+\f4\fs56 \cf2 \cb13 A common gotcha\cb1 \
+\pard\pardeftab720\sl576\sa600\partightenfactor0
+
+\f1\fs27\fsmilli13600 \cf2 \cb13 If you forget to save the file, or you immediately realize you want to change the migration to add another field, or something like that you can undo the last migration with\'a0
+\f3\fs24\fsmilli12240 \cf6 \strokec6 rake db:rollback
+\f1\fs27\fsmilli13600 \cf2 \strokec2 , then adjust the migration to be how you want it, and re-run\'a0
+\f3\fs24\fsmilli12240 \cf6 \strokec6 rake db:migrate
+\f1\fs27\fsmilli13600 \cf2 \strokec2 .
+\fs32 \cb1 \
+}

@@ -1,0 +1,153 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf400
+{\fonttbl\f0\fnil\fcharset0 HelveticaNeue;\f1\fswiss\fcharset0 Helvetica;\f2\fnil\fcharset0 HelveticaNeue-Light;
+\f3\fmodern\fcharset0 Courier;\f4\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red38\green38\blue38;\red251\green253\blue249;\red185\green188\blue186;
+\red22\green23\blue25;\red197\green200\blue198;\red219\green48\blue28;\red137\green195\blue135;\red133\green190\blue253;
+\red155\green255\blue78;\red255\green255\blue168;\red233\green233\blue233;\red53\green118\blue190;}
+{\*\expandedcolortbl;;\cssrgb\c20000\c20000\c20000;\cssrgb\c98824\c99216\c98039;\cssrgb\c77255\c78431\c77647;
+\cssrgb\c11373\c12157\c12941;\csgenericrgb\c77255\c78431\c77647;\cssrgb\c89412\c27843\c13725;\cssrgb\c60000\c80000\c60000;\cssrgb\c58824\c79608\c99608;
+\cssrgb\c65882\c100000\c37647;\cssrgb\c100000\c100000\c71373;\cssrgb\c92941\c92941\c92941;\cssrgb\c25882\c54510\c79216;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\sl840\sa600\partightenfactor0
+
+\f0\b\fs72 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 page\
+\pard\pardeftab720\sl600\sa200\partightenfactor0
+
+\b0\fs36 \cf2 In the previous lessons, we've setup a blank project. Right now, our project shows us the default Welcome Aboard message. In this lesson, we'll change this to just show the message of\'a0
+\i Welcome to my Awesome Web App
+\i0 \'a0on the main page of our web application.\
+\pard\pardeftab720\sl320\partightenfactor0
+
+\f1\fs28 \cf2 \
+\
+\pard\pardeftab720\sl320\sa1000\partightenfactor0
+\cf2 \
+\pard\pardeftab720\sl840\sa200\partightenfactor0
+
+\f2\fs56 \cf2 How to go through these lessons\
+\pard\pardeftab720\sl576\sa600\partightenfactor0
+
+\f1\fs32 \cf2 Before we start coding, here's some advice about how best to go through all the lessons.\
+Each lesson will give you clear instructions for when to write what kind of code and run commands in the terminal. At first, you might think copying and pasting is the way to go, but that's not really true. While copying and pasting might make you feel like you're making a lot of progress quickly, it actually hurts your learning, because coding is best learned by doing. This means, the more code you type, the more you will retain and be able to reproduce later on when you build your next web application.\
+\pard\pardeftab720\sl320\partightenfactor0
+
+\fs28 \cf2 \pard\pardeftab720\sl320\partightenfactor0
+\cf2 \
+\pard\pardeftab720\sl520\sa200\qc\partightenfactor0
+
+\fs48 \cf2 \cb3 One rule to always follow:\cb1 \
+\pard\pardeftab720\sl576\qc\partightenfactor0
+
+\b\fs32 \cf2 \cb3 Type out every line of code!\
+\pard\pardeftab720\sl576\sa600\qc\partightenfactor0
+
+\b0 \cf2 We care about your learning and believe the best way to absorb all the information here is to type every line out. Otherwise,\'a0
+\b unless we explicitly tell you
+\b0 \'a0to copy and paste a particular section of code you should type it into your terminal and text editor.\cb1 \
+\pard\pardeftab720\sl320\sa1400\partightenfactor0
+
+\fs28 \cf2 \
+\pard\pardeftab720\sl840\sa200\partightenfactor0
+
+\f2\fs56 \cf2 Setting up the first page\
+\pard\pardeftab720\sl576\sa600\partightenfactor0
+
+\f1\fs32 \cf2 The homepage or root page of our application should be the page that lists out all the places (like restaurants, hot dog stands, hamburger stands, you get where I'm going with this) in our application.\uc0\u8232 \
+So let's build a new controller for the root page to live. Let's call it the places controller and we can have the root go to the index action (typically index is what you'll use to list things out).\
+\pard\pardeftab720\sl320\partightenfactor0
+
+\fs28 \cf2 \pard\pardeftab720\sl320\partightenfactor0
+\cf2 \
+\pard\pardeftab720\sl840\sa200\qc\partightenfactor0
+
+\f2\fs56 \cf2 \cb3 Common Gotcha!\cb1 \
+\pard\pardeftab720\sl576\sa600\partightenfactor0
+
+\f1\fs32 \cf2 \cb3 Make sure to run the commands to setup the files (models, controllers, etc.) the same as we do in the lessons. Otherwise we will be unable to help you in the forum if problems arise within your app.\cb1 \
+Run this command to generate the controller:\
+\pard\pardeftab720\sl460\partightenfactor0
+
+\f3\fs28 \cf4 \cb5 \strokec4 \shad0 $ rails generate controller places\
+\pard\pardeftab720\sl576\sa600\partightenfactor0
+
+\f1\fs32 \cf2 \cb1 \strokec2 \shad0 Just like in the Splurty application, we're going to type commands that look like\'a0
+\f4\fs28\fsmilli14400 \cf7 \strokec7 rails generate ...\'a0
+\f1\fs32 \cf2 \strokec2 into our project a lot. If you think back to one of the first steps we took, it was to run\'a0
+\f4\fs28\fsmilli14400 \cf7 \strokec7 rails new ...
+\f1\fs32 \cf2 \strokec2 , which built up a blank rails web app for us. That single command wrote a ton of code for us and set us up with a full blank web application that was ready for us to start changing, and helps us build web apps fast.\
+The "rails generate" command is similar, where when you run the command it will automatically write a bunch of code for you. The part of this that looks like "rails generate" tells ruby on rails it's time to write some code for us. The next thing we specify is what we want to generate, which in this case is a "controller" (we'll explain what a controller is a little bit later), and then the last thing we do is we give the rails generate command the name of the thing we are generating. So in this case we're telling ruby on rails to write code to build us a blank controller called "places". We're going to be doing this a lot throughout this project, so even if it's a little fuzzy now, as you continue to run this command it will start becoming clearer.\
+\pard\pardeftab720\sl320\partightenfactor0
+
+\fs28 \cf2 \pard\pardeftab720\sl320\partightenfactor0
+\cf2 \
+\pard\pardeftab720\sl840\sa200\qc\partightenfactor0
+
+\f2\fs56 \cf2 \cb3 A common gotcha\cb1 \
+\pard\pardeftab720\sl576\sa600\partightenfactor0
+
+\f1\fs32 \cf2 \cb3 Make sure you generate the places controller with an\'a0
+\f4\fs28\fsmilli14400 \cf7 \strokec7 s
+\f1\fs32 \cf2 \strokec2 . Rails assumes the controller names are the plural form of the words.\cb1 \
+\pard\pardeftab720\sl840\sa200\partightenfactor0
+
+\f2\fs56 \cf2 Continue setting up the places controller\
+\pard\pardeftab720\sl576\sa600\partightenfactor0
+
+\f1\fs32 \cf2 This creates the places controller, which will be where our code for this page will live.\
+Now open up\'a0
+\f4\fs28\fsmilli14400 \cf7 \strokec7 config/routes.rb
+\f1\fs32 \cf2 \strokec2 \'a0and add this line someplace after the do, and before the end. Make sure the line doesn't start with a hashtag and it's not grey:\
+\pard\pardeftab720\sl460\partightenfactor0
+
+\f3\fs28 \cf8 \cb5 \strokec8 \shad0 Rails\cf4 \strokec4 \shad0 .application.routes.draw \cf9 \strokec9 \shad0 do\cf4 \strokec4 \shad0 \
+  root \cf10 \strokec10 \shad0 'places#index'\cf4 \strokec4 \shad0 \
+\cf9 \strokec9 \shad0 end\
+\pard\pardeftab720\sl460\partightenfactor0
+\cf4 \strokec4 \shad0  \
+\pard\pardeftab720\sl576\sa600\partightenfactor0
+
+\f1\fs32 \cf2 \cb1 \strokec2 \shad0 Then save the file.\
+Now open up\'a0
+\f4\fs28\fsmilli14400 \cf7 \strokec7 app/controllers/places_controller.rb
+\f1\fs32 \cf2 \strokec2 \'a0and adjust the file to look like this:\
+\pard\pardeftab720\sl460\partightenfactor0
+
+\f3\fs28 \cf9 \cb5 \strokec9 \shad0 class\cf4 \strokec4 \shad0  \cf11 \strokec11 \shad0 PlacesController\cf4 \strokec4 \shad0  \cf12 \strokec12 \shad0 <\cf4 \strokec4 \shad0  \cf8 \strokec8 \shad0 ApplicationController\cf4 \strokec4 \shad0 \
+\
+  \cf9 \strokec9 \shad0 def\cf4 \strokec4 \shad0  index\
+  \cf9 \strokec9 \shad0 end\cf4 \strokec4 \shad0 \
+\
+\cf9 \strokec9 \shad0 end\
+\pard\pardeftab720\sl460\partightenfactor0
+\cf4 \strokec4 \shad0  \
+ \
+\pard\pardeftab720\sl576\sa600\partightenfactor0
+
+\f1\fs32 \cf2 \cb1 \strokec2 \shad0 Then save the file.\
+And finally create a new file inside the places folder that got just created. Go to\'a0
+\f4\fs28\fsmilli14400 \cf7 \strokec7 app/views/places/
+\f1\fs32 \cf2 \strokec2 . Right click (or CTRL+click) on the places folder and create a new file. Save this file and name it\'a0
+\f4\fs28\fsmilli14400 \cf7 \strokec7 index.html.erb
+\f1\fs32 \cf2 \strokec2 .\
+Inside the\'a0
+\f4\fs28\fsmilli14400 \cf7 \strokec7 index.html.erb
+\f1\fs32 \cf2 \strokec2 \'a0file add the following line:\uc0\u8232 \
+\pard\pardeftab720\sl460\partightenfactor0
+
+\f3\fs28 \cf4 \cb5 \strokec4 \shad0 <\cf9 \strokec9 \shad0 h1\cf4 \strokec4 \shad0 >Welcome to my Awesome Web App</\cf9 \strokec9 \shad0 h1\cf4 \strokec4 \shad0 >\
+\pard\pardeftab720\sl576\sa600\partightenfactor0
+
+\f1\fs32 \cf2 \cb1 \strokec2 \shad0 Awesome, now if you go to\'a0{\field{\*\fldinst{HYPERLINK "http://localhost:3030/"}}{\fldrslt \cf13 \strokec13 http://localhost:3030}}\'a0you'll see your web app. Nice :)\
+\pard\pardeftab720\sl320\partightenfactor0
+
+\fs28 \cf2 \pard\pardeftab720\sl320\partightenfactor0
+\cf2 \
+\pard\pardeftab720\sl840\sa200\partightenfactor0
+
+\f2\fs56 \cf2 Git Commit\
+\pard\pardeftab720\sl576\sa600\partightenfactor0
+
+\f1\fs32 \cf2 Let's make a git commit for this step. Follow the git workflow guide\'a0{\field{\*\fldinst{HYPERLINK "https://workspace.thefirehoseproject.com/cheat-sheets/git-github-workflow"}}{\fldrslt \cf13 \strokec13 here}}.\
+}
