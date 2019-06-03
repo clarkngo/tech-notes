@@ -27,5 +27,9 @@ public class HashTable {
     table.clear();
     System.out.println("empty hashTable: "
                       + table); 
+
+    // Checking for the key_element '20' 
+    System.out.println("Is the key 'Pen' present? " +  
+    table.containsKey("Pen")); 
   }
 }
